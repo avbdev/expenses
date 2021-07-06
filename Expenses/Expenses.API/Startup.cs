@@ -1,3 +1,4 @@
+using Expenses.DB;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +29,8 @@ namespace Expenses.API
 		{
 
 			services.AddControllers();
+
+			services.AddDbContext<AppDbContext>();
 
 			services.AddSwaggerGen(c =>
 			{
