@@ -35,6 +35,16 @@ namespace Expenses.API
 
 			services.AddTransient<IExpensesServices, ExpensesServices>();
 
+			services.AddCors(options =>
+			{
+				options.AddPolicy("ExpensesPolicy",
+					builder => {
+						builder.WithOrigins("*")
+						.AllowAnyHeader()
+						.AllowAnyMethod();
+					});
+			});
+
 			services.AddSwaggerGen(c =>
 			{
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "Expenses.API", Version = "v1" });
@@ -56,6 +66,8 @@ namespace Expenses.API
 			app.UseHttpsRedirection();
 
 			app.UseRouting();
+
+			app.UseCors("ExpensesPolicy");
 
 			// app.UseAuthorization();
 			app.UseSwagger();
