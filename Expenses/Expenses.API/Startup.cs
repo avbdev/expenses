@@ -1,3 +1,4 @@
+using Expenses.Core;
 using Expenses.DB;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -32,6 +33,8 @@ namespace Expenses.API
 
 			services.AddDbContext<AppDbContext>();
 
+			services.AddTransient<IExpensesServices, ExpensesServices>();
+
 			services.AddSwaggerGen(c =>
 			{
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "Expenses.API", Version = "v1" });
@@ -44,10 +47,10 @@ namespace Expenses.API
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
-				app.UseSwagger();
-				app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Expenses.API v1"));
+				
 			}
 
+			
 			app.UseHsts();
 
 			app.UseHttpsRedirection();
@@ -55,6 +58,9 @@ namespace Expenses.API
 			app.UseRouting();
 
 			// app.UseAuthorization();
+			app.UseSwagger();
+			app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Expenses.API v1"));
+
 
 			app.UseEndpoints(endpoints =>
 			{

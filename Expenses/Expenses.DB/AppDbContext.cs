@@ -10,7 +10,7 @@ namespace Expenses.DB
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-                @"Server=(localdb)\mssqllocaldb;Database=Blogging;Integrated Security=True");
+                @"Server=(localdb)\mssqllocaldb;Database=Expenses;Integrated Security=True");
         }
     }
 

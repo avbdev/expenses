@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Expenses.Core\Expenses.Core.csproj" />
     <ProjectReference Include="..\Expenses.DB\Expenses.DB.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
